@@ -86,7 +86,6 @@ st.markdown(f"{dropdown1} Crude Oil Production")
 fig1, ax = plt.subplots()
 ax.plot(df1["tahun"], df1["produksi"])
 ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
-plt.setp(ax.get_xticklabels(), rotation = 45)
 st.pyplot(fig1)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
@@ -104,7 +103,8 @@ df2_final = df2_reindexed[0:int(input_country)]
 st.markdown(f"Top {input_country} Crude Oil Producers in {slider_year}")
 fig2, ax = plt.subplots()
 ax.bar(df2_final["kode_negara"], df2_final["produksi"])
-ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
+ax.set(xlabel = "Country", ylabel = "Crude Oil Production")
+plt.setp(ax.get_xticklabels(), rotation = 90)
 st.pyplot(fig2)
 
 # c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara kumulatif
@@ -127,8 +127,8 @@ df3_final = df3[0:int(select_country)]
 
 fig3, ax = plt.subplots()
 ax.bar(df3_final["Country"], df3_final["Production"])
-ax.set_xlabel("Country", fontsize = 14)
-ax.set_ylabel("Crude Oil Production", fontsize = 14)
+ax.set(xlabel = "Country", ylabel = "Crude Oil Production")
+plt.setp(ax.get_xticklabels(), rotation = 90)
 st.pyplot(fig3)
 
 # d. Informasi yang menyebutkan: 
