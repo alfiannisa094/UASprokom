@@ -112,7 +112,7 @@ df2[n] = df2_countries
 
 st.subheader(f"Top {int(input_country)} Crude Oil Producers in {slider_year}")
 
-cmap_name = 'bargraph1'
+cmap_name = 'tab20'
 cmap = cm.get_cmap(cmap_name)
 colors = cmap.colors[:len(df2_list)]
 fig2, ax = plt.subplots()
