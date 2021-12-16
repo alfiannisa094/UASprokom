@@ -95,7 +95,7 @@ st.write("Crude Oil Production History by Country")
 slider_country = st.slider("Select top number of countries", min_value = 1, max_value = len(country_names))
 slider_year = st.slider("Select year", min_value = 1971, max_value = 2015)
 
-df2_year = df_cleaned.loc[df_cleaned["tahun"] == int(dropdown2),["kode_negara","produksi"]]
+df2_year = df_cleaned.loc[df_cleaned["tahun"] == int(slider_year),["kode_negara","produksi"]]
 df2_sorted = df2_year.sort_values(["produksi"], ascending = False)  #mengurutkan data produksi dari terbesar ke terkecil
 df2_reindexed = df2_sorted.reset_index(drop=True)
 df2_final = df2_reindexed[0:int(slider1_country)]
