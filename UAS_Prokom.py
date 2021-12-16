@@ -91,7 +91,7 @@ st.pyplot(fig1)
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
 
-st.header("Crude Oil Production History by Country")
+st.header("Cumulative Crude Oil Production by Year")
 input_country = st.number_input("Select top number of countries", min_value = 1, max_value = len(country_names))
 slider_year = st.slider("Select year", min_value = 1971, max_value = 2015)
 
