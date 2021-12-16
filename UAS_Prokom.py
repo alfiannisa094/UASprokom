@@ -135,6 +135,9 @@ st.pyplot(fig3)
 #    (2) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi terkecil (tidak sama dengan nol) pada tahun T dan keseluruhan tahun
 #    (3) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi sama dengan nol pada tahun T dan keseluruhan tahun
 
+
+st.subheader("Summary")
+
 years = df_cleaned['tahun'].tolist()
 years = list(dict.fromkeys(years))
 
@@ -154,6 +157,9 @@ country_smallest_production = countryncode[smallest_production]           # Nama
 
 df4_production0 = df4[df4['produksi'] == 0]
 countries_production0 = df4_production0["kode_negara"].tolist()
+
+st.write("Largest Producer of Crude Oil")
+st.write("Country: ", country_biggest_production)
 
 # Negara dengan produksi terbesar 
 # Negara dengan produksi terkecil
