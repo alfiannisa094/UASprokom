@@ -144,7 +144,7 @@ st.pyplot(fig3)
 years = df_cleaned['tahun'].tolist()
 years = list(dict.fromkeys(years))
 
-slider3_year = st.slider("Select year", min_value = 1971, max_value = 2015)
+slider3_year = st.selectbox("Select year", min_value = 1971, max_value = 2015)
 
 df4 = df_cleaned.loc[df_cleaned["tahun"] == int(slider3_year)]
 df4_cleaned = df4[df4['produksi'] != 0]
