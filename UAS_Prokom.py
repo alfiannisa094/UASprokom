@@ -11,10 +11,10 @@ import streamlit as st
 st.set_page_config(layout="wide")  # this needs to be the first Streamlit command called
 st.title("Crude Oil Production throughout History")
 
-fhand = open('/Users/alfiannisa/Downloads/kode_negara_lengkap.json')
+fhand = open('kode_negara_lengkap.json')
 data_country = js.load(fhand)                           
-data_production = pd.read_csv('/Users/alfiannisa/Downloads/produksi_minyak_mentah.csv')
-jsonasdf = pd.read_json('/Users/alfiannisa/Downloads/kode_negara_lengkap.json')
+data_production = pd.read_csv('produksi_minyak_mentah.csv')
+jsonasdf = pd.read_json('kode_negara_lengkap.json')
 
 # Menghilangkan data produksi kode negara yang tidak terdapat di file json
 
