@@ -148,7 +148,7 @@ df3_top[y] = df3_countries
 
 st.subheader(f"Top {int(input_country)} Crude Oil Producers in History")
 fig3, ax = plt.subplots()
-ax.bar(df3_top["Country"], df3_top["Production"])
+ax.bar(df3_top["Country"], df3_top["Production"], color = 'darkgreen', alpha = 0.3)
 ax.set(xlabel = "Country", ylabel = "Crude Oil Production")
 plt.setp(ax.get_xticklabels(), rotation = 90)
 st.pyplot(fig3)
