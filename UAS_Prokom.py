@@ -10,7 +10,6 @@ import streamlit as st
 import matplotlib.pyplot as plt
 from matplotlib import cm
 
-st.set_page_config(layout="wide")  # this needs to be the first Streamlit command called
 st.title("Crude Oil Production throughout History")
 
 fhand = open('kode_negara_lengkap.json')
