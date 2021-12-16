@@ -84,7 +84,6 @@ df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
 fig1, ax = plt.subplots()
 ax.bar(df1["tahun"], df1["produksi"])
-ax.set_xticks(rotation = 45)
 ax.set_xlabel("Year", fontsize = 14)
 ax.set_ylabel("Crude Oil Production", fontsize = 14)
 st.pyplot(fig1)
