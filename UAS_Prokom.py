@@ -158,9 +158,7 @@ country_smallest_production = countryncode[smallest_production]           # Nama
 df4_production0 = df4[df4['produksi'] == 0]
 countries_production0 = df4_production0["kode_negara"].tolist()
 
-st.write("""
-         #### Largest Producer of Crude Oil
-         """)
+st.header("Largest Producer of Crude Oil")
 st.write("Production: ", df_cleaned["produksi"][index_biggest_production])
 st.write("Country: ", country_biggest_production)
 st.write("Country Code: ", biggest_production)
