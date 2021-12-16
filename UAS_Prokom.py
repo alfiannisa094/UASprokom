@@ -78,12 +78,11 @@ st.subheader("Crude Oil Production History by Country")
 
 dropdown1 = st.multiselect('Choose country:', country_names)
 
-country_code = codencountry["dropdown1"]
-
-df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
-df1_yearindex= data_production.set_index("tahun") 
-
-st.line_chart(data = df1_yearindex, width = 10, height = 400)
+if len(dropdown1) > 0:
+    country_code = codencountry["dropdown1"]
+    df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
+    df1_yearindex= data_production.set_index("tahun") 
+    st.line_chart(df1_yearindex)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
