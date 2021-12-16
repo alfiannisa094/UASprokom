@@ -143,7 +143,7 @@ for i in df3_list:
 
 y = df3_top.columns[0]
 df3_top.drop(y, axis = 1, inplace = True)
-df3_top[n] = df3_countries
+df3_top[y] = df3_countries
 
 st.subheader(f"Top {int(input_country)} Crude Oil Producers in History")
 fig3, ax = plt.subplots()
