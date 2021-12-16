@@ -133,11 +133,21 @@ for country in country_codes_cleaned:
 sorted_dict = dict(sorted(sumdict.items(), key=lambda x: x[1], reverse=True))
 
 df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
-df3_final = df3[0:int(select_country)]
+df3_top = df3[0:int(select_country)]
+
+df3_list = df3_top["kode_negara"].tolist()
+
+df3_countries = list()
+for i in df3_list:
+    df3_countries.append(countryncode[i])
+
+y = df3_top.columns[0]
+df3_top.drop(y, axis = 1, inplace = True)
+df3_top[n] = df3_countries
 
 st.subheader(f"Top {int(input_country)} Crude Oil Producers in History")
 fig3, ax = plt.subplots()
-ax.bar(df3_final["Country"], df3_final["Production"])
+ax.bar(df3_top["Country"], df3_top["Production"])
 ax.set(xlabel = "Country", ylabel = "Crude Oil Production")
 plt.setp(ax.get_xticklabels(), rotation = 90)
 st.pyplot(fig3)
