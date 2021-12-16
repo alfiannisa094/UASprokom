@@ -131,7 +131,7 @@ df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
 df3_final = df3[0:int(slider2_country)]
 
 fig3, ax = plt.subplots()
-ax.bar(df3_final["kode_negara"], df2_final["produksi"])
+ax.bar(df3_final["kode_negara"], df3_final["produksi"])
 ax.set_xlabel("Country", fontsize = 14)
 ax.set_ylabel("Crude Oil Production", fontsize = 14)
 st.pyplot(fig3)
