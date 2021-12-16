@@ -187,7 +187,7 @@ for i in countries_production0:
     region0.append(countrynregion[i])
     subregion0.append(countrynsubregion[i])
 
-df4_final = pd.DataFrame(list(zip(countries_production0, country0, region0, subregion0)),
+df4_final = pd.DataFrame(list(zip(country0, countries_production0, region0, subregion0)),
             columns =['Country', 'Country Code', 'Region', 'Sub-Region'])
 
 st.dataframe(df4_final)
