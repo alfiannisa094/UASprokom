@@ -153,7 +153,7 @@ index_biggest_production = df4_cleaned["produksi"].idxmax()
 biggest_production = df_cleaned.kode_negara[index_biggest_production]
 country_biggest_production = countryncode[biggest_production]           # Nama negara dgn produksi terbanyak pada tahun T
 
-st.subheader("Largest Production of Crude Oil in {select_year}")
+st.subheader(f"Largest Production of Crude Oil in {select_year}")
 st.write("Production: ", df_cleaned["produksi"][index_biggest_production])
 st.write("Country: ", country_biggest_production)
 st.write("Country Code: ", biggest_production)
@@ -166,7 +166,7 @@ index_smallest_production = df4_cleaned["produksi"].idxmin()
 smallest_production = df_cleaned.kode_negara[index_smallest_production]
 country_smallest_production = countryncode[smallest_production]           # Nama negara dgn produksi terkecil pada tahun T
 
-st.subheader("Least Production of Crude Oil in ", int(select_year))
+st.subheader(f"Least Production of Crude Oil in {select_year}")
 st.write("Production: ", df_cleaned["produksi"][index_smallest_production])
 st.write("Country: ", country_smallest_production)
 st.write("Country Code: ", smallest_production)
@@ -190,7 +190,7 @@ for i in countries_production0:
 df4_final = pd.DataFrame(list(zip(country0, countries_production0, region0, subregion0)),
             columns =['Country', 'Country Code', 'Region', 'Sub-Region'])
 
-st.subheader("No Crude Oil Production in", int(select_year))
+st.subheader(f"No Crude Oil Production in {select_year}")
 st.dataframe(df4_final)
 df4_final.index = np.arange(1, len(df4_final) + 1)
 
