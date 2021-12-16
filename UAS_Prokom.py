@@ -21,25 +21,25 @@ data_country = js.load(fhand)
 data_production = pd.read_csv('produksi_minyak_mentah.csv')
 jsonasdf = pd.read_json('kode_negara_lengkap.json')
 
-# Menghilangkan data produksi kode negara yang tidak terdapat di file json
+# Menghilangkan data produksi untuk kode kumpulan/organisasi negara
 
 country_codes = list()
 country_codes = list()
 removed_data = list()
 
-for code in data_country:                                   # Membuat list kode negara dari file json                   
+for code in data_country:                                             
     country_codes.append(code["alpha-3"])
 
-for index in data_production.index :                        # Membuat list kode kumpulan/organisasi negara 
+for index in data_production.index :          
     if data_production["kode_negara"][index] in country_codes :
         continue
     else:
         removed_data.append(data_production["kode_negara"][index])
 
-removed_data = list(dict.fromkeys(removed_data))            # Menghilangkan kode negara yg double 
+removed_data = list(dict.fromkeys(removed_data))        
 
-df_countryindex= data_production.set_index("kode_negara")   # Mengubah index menjadi kode negara 
-df_cleaned = df_countryindex.drop(removed_data)             # Menghilangkan baris yang mengandung kode kumpulan/organisasi negara
+df_countryindex= data_production.set_index("kode_negara") 
+df_cleaned = df_countryindex.drop(removed_data)         
 df_cleaned = df_cleaned.reset_index()
 
 # Menghilangkan kode negara yang tidak terdapat di data produksi
@@ -59,7 +59,6 @@ country_codes_cleaned = minus(codes_cleaned,removed_data)
 country_codes_cleaned.sort()
 
 # Membuat list nama negara 
-
 country_names = list()
 for code in data_country:  
     if code["alpha-3"] in country_codes_cleaned :
@@ -72,7 +71,7 @@ codencountry = jsonasdf.set_index("name")["alpha-3"].to_dict()
 # Memasangkan kode negara dengan region
 countrynregion = jsonasdf.set_index("alpha-3")["region"].to_dict()
 
-# Memasangkan kode negara dengan region
+# Memasangkan kode negara dengan subregion
 countrynsubregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 
 # a. Grafik jumlah produksi minyak mentah terhadap waktu (tahun) dari suatu negara N, dimana nilai
@@ -95,12 +94,12 @@ st.pyplot(fig1)
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
 
-st.header("Cumulative Crude Oil Production by Year")
+st.header("Crude Oil Production by Year")
 input_country = st.number_input("Select top number of countries", min_value = 1, max_value = len(country_names))
 slider_year = st.slider("Select year", min_value = 1971, max_value = 2015)
 
 df2_year = df_cleaned.loc[df_cleaned["tahun"] == int(slider_year),["kode_negara","produksi"]]
-df2_sorted = df2_year.sort_values(["produksi"], ascending = False)  #mengurutkan data produksi dari terbesar ke terkecil
+df2_sorted = df2_year.sort_values(["produksi"], ascending = False)
 df2_reindexed = df2_sorted.reset_index(drop=True)
 df2 = df2_reindexed[0:int(input_country)]
 
@@ -169,6 +168,8 @@ years = list(dict.fromkeys(years))
 
 select_year = st.selectbox("Select year", years)
 
+#Menghilagkan data produksi 0
+
 df4 = df_cleaned.loc[df_cleaned["tahun"] == int(select_year)]
 df4_cleaned = df4[df4['produksi'] != 0]
 df4_cleaned_sorted = df4_cleaned.sort_values(["produksi"], ascending=False)
@@ -219,6 +220,8 @@ df4_final = pd.DataFrame(list(zip(country0, countries_production0, region0, subr
 st.subheader(f"No Crude Oil Production in {select_year}")
 st.dataframe(df4_final)
 df4_final.index = np.arange(1, len(df4_final) + 1)
+
+# Informasi Data Produksi Kumulatif
 
 st.header("Cumulative Summary (1971-2015)")
 
