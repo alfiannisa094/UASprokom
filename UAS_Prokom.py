@@ -224,7 +224,7 @@ st.write("Sub-Region: ", countrynsubregion[cumsmallest_production])
 # Negara dengan produksi 0
 
 cumproduction0 = df3[df3["Production"] == 0]
-countries_cumproduction0 = cumproduction0["kode_negara"].tolist()
+countries_cumproduction0 = cumproduction0["Country"].tolist()
 
 countrycum0 = list()
 regioncum0 = list()
