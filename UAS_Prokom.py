@@ -83,8 +83,9 @@ country_code = codencountry[dropdown1]
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
 fig1, ax = plt.subplots()
-ax.bar(df1["tahun"], df1["produksi"])
-ax.set(title = "{dropdown1} Crude Oil Production", xlabel = "Year", ylabel = "Crude Oil Production")
+ax.line(df1["tahun"], df1["produksi"])
+ax.set_title(dropdown1)
+ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
 st.pyplot(fig1)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
