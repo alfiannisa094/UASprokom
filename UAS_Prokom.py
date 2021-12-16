@@ -160,6 +160,7 @@ countries_production0 = df4_production0["kode_negara"].tolist()
 
 st.write("Largest Producer of Crude Oil")
 st.write("Country: ", country_biggest_production)
+st.write("Production: ", index_biggest_production["produksi"])
 
 # Negara dengan produksi terbesar 
 # Negara dengan produksi terkecil
