@@ -135,8 +135,7 @@ st.pyplot(fig3)
 #    (2) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi terkecil (tidak sama dengan nol) pada tahun T dan keseluruhan tahun
 #    (3) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi sama dengan nol pada tahun T dan keseluruhan tahun
 
-
-st.header("Summary")
+st.header("Summary by Year")
 
 years = df_cleaned['tahun'].tolist()
 years = list(dict.fromkeys(years))
@@ -147,7 +146,7 @@ df4 = df_cleaned.loc[df_cleaned["tahun"] == int(select_year)]
 df4_cleaned = df4[df4['produksi'] != 0]
 df4_cleaned_sorted = df4_cleaned.sort_values(["produksi"], ascending=False)
 
-# Negara dengan produksi terbesar 
+# Negara dengan produksi terbesar pada tahun T 
 
 index_biggest_production = df4_cleaned["produksi"].idxmax()
 biggest_production = df_cleaned.kode_negara[index_biggest_production]
@@ -160,7 +159,7 @@ st.write("Country Code: ", biggest_production)
 st.write("Region: ", countrynregion[biggest_production])
 st.write("Sub-Region: ",  countrynsubregion[biggest_production])
 
-# Negara dengan produksi terkecil
+# Negara dengan produksi terkecil pada tahun T
 
 index_smallest_production = df4_cleaned["produksi"].idxmin()
 smallest_production = df_cleaned.kode_negara[index_smallest_production]
@@ -173,7 +172,7 @@ st.write("Country Code: ", smallest_production)
 st.write("Region: ", countrynregion[smallest_production])
 st.write("Sub-Region: ",  countrynsubregion[smallest_production])
 
-# Negara dengan produksi 0
+# Negara dengan produksi 0 pada tahun T
 
 df4_production0 = df4[df4['produksi'] == 0]
 countries_production0 = df4_production0["kode_negara"].tolist()
@@ -191,4 +190,17 @@ df4_final = pd.DataFrame(list(zip(country0, countries_production0, region0, subr
             columns =['Country', 'Country Code', 'Region', 'Sub-Region'])
 
 st.dataframe(df4_final)
+
+st.header("Cumulative Summary (1971-2015)")
+
+# Negara dengan produksi terbesar
+
+
+# Negara dengan produksi terkecil
+df3_cleaned = df3[df3['Production'] != 0]
+index_cumsmallest_production = df3_cleaned["Production"].idxmin()
+cumsmallest_production = df3.Country[index_cumsmallest_production]
+country_cumsmallest_production = countryncode[cumsmallest_production]           # Nama negara dgn produksi terkecil pada tahun T
+
+# Negara dengan produksi 0
 
