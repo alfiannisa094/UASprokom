@@ -84,9 +84,14 @@ df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
 fig1, ax = plt.subplots()
 ax.bar(df1["tahun"], df1["produksi"])
-ax.set_xlabel("Year", fontsize = 14)
-ax.set_ylabel("Crude Oil Production", fontsize = 14)
+ax.set(title = dropdown1, "Crude Oil Production",
+       xlabel = "Year", 
+       ylabel = "Crude Oil Production")
 st.pyplot(fig1)
+
+ax.set(title = "Average Monthly Precipitation in Boulder, CO",
+       xlabel = "Month",
+       ylabel = "Precipitation (inches)")
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
@@ -152,7 +157,7 @@ index_biggest_production = df4_cleaned["produksi"].idxmax()
 biggest_production = df_cleaned.kode_negara[index_biggest_production]
 country_biggest_production = countryncode[biggest_production]           # Nama negara dgn produksi terbanyak pada tahun T
 
-st.subheader("Largest Production of Crude Oil in ", int(select_year))
+st.subheader("Largest Production of Crude Oil in {select_year}")
 st.write("Production: ", df_cleaned["produksi"][index_biggest_production])
 st.write("Country: ", country_biggest_production)
 st.write("Country Code: ", biggest_production)
