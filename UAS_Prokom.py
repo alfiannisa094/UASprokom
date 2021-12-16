@@ -86,7 +86,7 @@ dropdown1 = st.selectbox('Choose country:', country_names)
 country_code = codencountry[dropdown1]  
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
-st.subheader(f"{dropdown1} Crude Oil Production")
+st.subheader(f"{dropdown1} Crude Oil Production (1971-2015)")
 fig1, ax = plt.subplots()
 ax.plot(df1["tahun"], df1["produksi"], color = 'cyan')
 ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
