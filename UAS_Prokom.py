@@ -83,7 +83,7 @@ country_code = codencountry[dropdown1]
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
 fig1, ax = plt.subplots()
-ax.bar(df1["tahun"], df1["produksi"], color = colors)
+ax.bar(df1["tahun"], df1["produksi"])
 ax.set_xticklabels(rotation = 45)
 ax.set_xlabel("Year", fontsize = 14)
 ax.set_ylabel("Crude Oil Production", fontsize = 14)
@@ -102,7 +102,7 @@ df2_reindexed = df2_sorted.reset_index(drop=True)
 df2_final = df2_reindexed[0:int(slider1_country)]
 
 fig2, ax = plt.subplots()
-ax.bar(df2_final["kode_negara"], df2_final["produksi"], color = colors)
+ax.bar(df2_final["kode_negara"], df2_final["produksi"])
 ax.set_xlabel("Country", fontsize = 14)
 ax.set_ylabel("Crude Oil Production", fontsize = 14)
 st.pyplot(fig2)
@@ -132,7 +132,7 @@ df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
 df3_final = df3[0:int(slider2_country)]
 
 fig3, ax = plt.subplots()
-ax.bar(df3_final["kode_negara"], df2_final["produksi"], color = colors)
+ax.bar(df3_final["kode_negara"], df2_final["produksi"])
 ax.set_xlabel("Country", fontsize = 14)
 ax.set_ylabel("Crude Oil Production", fontsize = 14)
 st.pyplot(fig3)
@@ -145,8 +145,7 @@ st.pyplot(fig3)
 years = df_cleaned['tahun'].tolist()
 years = list(dict.fromkeys(years))
 
-slider3_year = input("Masukkan tahun(1971-2015): ")
-# slider3_year = st.slider
+slider3_year = st.slider("Select year", min_value = 1971, max_value = 2015)
 
 df4 = df_cleaned.loc[df_cleaned["tahun"] == int(slider3_year)]
 df4_cleaned = df4[df4['produksi'] != 0]
