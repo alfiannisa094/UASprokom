@@ -191,6 +191,7 @@ df4_final = pd.DataFrame(list(zip(country0, countries_production0, region0, subr
 
 st.subheader("No Crude Oil Production in", select_year)
 st.dataframe(df4_final)
+df4_final.index = np.arange(1, len(df4_final) + 1)
 
 st.header("Cumulative Summary (1971-2015)")
 
