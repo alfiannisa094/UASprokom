@@ -37,7 +37,6 @@ df_countryindex= data_production.set_index("kode_negara")   # Mengubah index men
 df_cleaned = df_countryindex.drop(removed_data)             # Menghilangkan baris yang mengandung kode kumpulan/organisasi negara
 df_cleaned = df_cleaned.reset_index()
 
-
 # Menghilangkan kode negara yang tidak terdapat di data produksi
 
 codes_cleaned = list()
@@ -71,13 +70,11 @@ countrynregion = jsonasdf.set_index("alpha-3")["region"].to_dict()
 # Memasangkan kode negara dengan region
 countrynregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 
-"""
-a. Grafik jumlah produksi minyak mentah terhadap waktu (tahun) dari suatu negara N, dimana nilai
-   N dapat dipilih oleh user secara interaktif. Nama negara N dituliskan secara lengkap bukan kode
-   negaranya.
-"""
+# a. Grafik jumlah produksi minyak mentah terhadap waktu (tahun) dari suatu negara N, dimana nilai
+#   N dapat dipilih oleh user secara interaktif. Nama negara N dituliskan secara lengkap bukan kode
+#   negaranya.
 
-# st.write("Crude Oil Production History by Country")
+st.write("Crude Oil Production History by Country")
 
 # dropdown1 = st.multiselect('Choose country:', country_names)
 # dropdown1 = input("Negara:")
@@ -93,10 +90,8 @@ a. Grafik jumlah produksi minyak mentah terhadap waktu (tahun) dari suatu negara
 
 # st.line_chart(data=df1, width = 10, height = 400)
 
-"""
-b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
-   nilai B dan T dapat dipilih oleh user secara interaktif.
-"""
+# b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
+#    nilai B dan T dapat dipilih oleh user secara interaktif.
 
 # st.write("Crude Oil Production History by Country")
 # slider_country = st.slider("Top number of countries")
@@ -111,10 +106,8 @@ b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada ta
 # df2_final = df2_reindexed[0:int(slider1_country)]
 # print(df2_final)
 
-"""
-c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara kumulatif
-   keseluruhan tahun, dimana nilai B dapat dipilih oleh user secara interaktif.
-"""
+# c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara kumulatif
+#    keseluruhan tahun, dimana nilai B dapat dipilih oleh user secara interaktif.
 
 # st.write("Cumulative Crude Oil Production")
 # slider2_country = input("Masukkan berapa besar negara: ")
@@ -137,12 +130,10 @@ c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara 
 # df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
 # df3_final = df3[0:int(slider2_country)]
 
-"""
-d. Informasi yang menyebutkan: 
-   (1) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi terbesar pada tahun T dan keseluruhan tahun
-   (2) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi terkecil (tidak sama dengan nol) pada tahun T dan keseluruhan tahun
-   (3) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi sama dengan nol pada tahun T dan keseluruhan tahun
-"""
+# d. Informasi yang menyebutkan: 
+#    (1) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi terbesar pada tahun T dan keseluruhan tahun
+#    (2) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi terkecil (tidak sama dengan nol) pada tahun T dan keseluruhan tahun
+#    (3) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi sama dengan nol pada tahun T dan keseluruhan tahun
 
 years = df_cleaned['tahun'].tolist()
 years = list(dict.fromkeys(years))
