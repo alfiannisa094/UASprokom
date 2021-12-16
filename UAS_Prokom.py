@@ -69,7 +69,7 @@ codencountry = jsonasdf.set_index("name")["alpha-3"].to_dict()
 countrynregion = jsonasdf.set_index("alpha-3")["region"].to_dict()
 
 # Memasangkan kode negara dengan region
-countrynregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
+countrynsubregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 
 # a. Grafik jumlah produksi minyak mentah terhadap waktu (tahun) dari suatu negara N, dimana nilai
 #   N dapat dipilih oleh user secara interaktif. Nama negara N dituliskan secara lengkap bukan kode
@@ -159,8 +159,14 @@ df4_production0 = df4[df4['produksi'] == 0]
 countries_production0 = df4_production0["kode_negara"].tolist()
 
 st.write("Largest Producer of Crude Oil")
+st.write("Production: ", df_cleaned["produksi"][index_biggest_production])
 st.write("Country: ", country_biggest_production)
-st.write("Production: ", index_biggest_production["produksi"])
+st.write("Country Code: ", biggest_production)
+st.write("Region: ", countrynregion[biggest_production])
+st.write("Sub-Region: ",  countrynsubregion[biggest_production])
+
+
+
 
 # Negara dengan produksi terbesar 
 # Negara dengan produksi terkecil
