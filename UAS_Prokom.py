@@ -86,6 +86,7 @@ st.markdown(f"{dropdown1} Crude Oil Production")
 fig1, ax = plt.subplots()
 ax.plot(df1["tahun"], df1["produksi"])
 ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
+plt.setp(ax.get_xticklabels(), rotation = 45)
 st.pyplot(fig1)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
