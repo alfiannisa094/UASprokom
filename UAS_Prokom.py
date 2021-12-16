@@ -9,7 +9,11 @@ import json as js
 import streamlit as st
 import matplotlib.pyplot as plt
 from matplotlib import cm
+from PIL import Image
 
+image = Image.open('crudeoilimage.jpeg')
+
+st.image(image)
 st.title("Crude Oil Production throughout History")
 
 fhand = open('kode_negara_lengkap.json')
