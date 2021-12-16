@@ -150,7 +150,7 @@ y = df3_top.columns[0]
 df3_top.drop(y, axis = 1, inplace = True)
 df3_top[y] = df3_countries
 
-st.subheader(f"Top {int(input_country)} Crude Oil Producers in History")
+st.subheader(f"Top {int(select_country)} Crude Oil Producers in History")
 fig3, ax = plt.subplots()
 ax.bar(df3_top["Country"], df3_top["Production"], color = 'darkgreen', alpha = 0.3)
 ax.set(xlabel = "Country", ylabel = "Crude Oil Production")
