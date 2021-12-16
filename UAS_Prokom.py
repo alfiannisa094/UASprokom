@@ -135,7 +135,7 @@ sorted_dict = dict(sorted(sumdict.items(), key=lambda x: x[1], reverse=True))
 df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
 df3_top = df3[0:int(select_country)]
 
-df3_list = df3_top["kode_negara"].tolist()
+df3_list = df3_top["Country"].tolist()
 
 df3_countries = list()
 for i in df3_list:
