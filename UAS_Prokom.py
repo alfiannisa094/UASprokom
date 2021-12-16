@@ -75,7 +75,7 @@ countrynsubregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 #   N dapat dipilih oleh user secara interaktif. Nama negara N dituliskan secara lengkap bukan kode
 #   negaranya.
 
-st.subheader("Crude Oil Production History by Country")
+st.header("Crude Oil Production History by Country")
 
 dropdown1 = st.selectbox('Choose country:', country_names)
 
@@ -91,7 +91,7 @@ st.pyplot(fig1)
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
 
-st.subheader("Crude Oil Production History by Country")
+st.header("Crude Oil Production History by Country")
 input_country = st.number_input("Select top number of countries", min_value = 1, max_value = len(country_names))
 slider_year = st.slider("Select year", min_value = 1971, max_value = 2015)
 
@@ -109,7 +109,7 @@ st.pyplot(fig2)
 # c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara kumulatif
 #    keseluruhan tahun, dimana nilai B dapat dipilih oleh user secara interaktif.
 
-st.subheader("Cumulative Crude Oil Production (1971-2015)")
+st.header("Cumulative Crude Oil Production (1971-2015)")
 select_country = st.slider("Select top number of countries :", min_value = 1, max_value = len(country_names))
 
 sumdict = dict()
@@ -136,7 +136,7 @@ st.pyplot(fig3)
 #    (3) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi sama dengan nol pada tahun T dan keseluruhan tahun
 
 
-st.subheader("Summary")
+st.header("Summary")
 
 years = df_cleaned['tahun'].tolist()
 years = list(dict.fromkeys(years))
@@ -158,7 +158,7 @@ country_smallest_production = countryncode[smallest_production]           # Nama
 df4_production0 = df4[df4['produksi'] == 0]
 countries_production0 = df4_production0["kode_negara"].tolist()
 
-st.header("Largest Producer of Crude Oil")
+st.subheader("Largest Producer of Crude Oil")
 st.write("Production: ", df_cleaned["produksi"][index_biggest_production])
 st.write("Country: ", country_biggest_production)
 st.write("Country Code: ", biggest_production)
