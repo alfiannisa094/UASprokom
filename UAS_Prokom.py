@@ -237,3 +237,6 @@ for i in countries_cumproduction0:
 
 df5_final = pd.DataFrame(list(zip(countrycum0, countries_cumproduction0, regioncum0, subregioncum0)),
             columns =['Country', 'Country Code', 'Region', 'Sub-Region'])
+
+st.subheader("No Crude Oil Production")
+st.dataframe(df5_final)
