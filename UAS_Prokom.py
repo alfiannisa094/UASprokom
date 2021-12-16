@@ -76,6 +76,7 @@ countrynsubregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 #   negaranya.
 
 st.header("Crude Oil Production History by Country")
+st.markdown("{dropdown1} Crude Oil Production")
 
 dropdown1 = st.selectbox('Choose country:', country_names)
 
@@ -84,7 +85,6 @@ df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
 fig1, ax = plt.subplots()
 ax.plot(df1["tahun"], df1["produksi"])
-ax.set_title(dropdown1, "Crude Oil Production")
 ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
 st.pyplot(fig1)
 
@@ -102,8 +102,7 @@ df2_final = df2_reindexed[0:int(input_country)]
 
 fig2, ax = plt.subplots()
 ax.bar(df2_final["kode_negara"], df2_final["produksi"])
-ax.set_xlabel("Country", fontsize = 14)
-ax.set_ylabel("Crude Oil Production", fontsize = 14)
+ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
 st.pyplot(fig2)
 
 # c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara kumulatif
