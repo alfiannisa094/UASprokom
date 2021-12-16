@@ -235,8 +235,10 @@ for i in countries_cumproduction0:
     regioncum0.append(countrynregion[i])
     subregioncum0.append(countrynsubregion[i])
 
-df5_final = pd.DataFrame(list(zip(countrycum0, countries_cumproduction0, regioncum0, subregioncum0)),
+df5 = pd.DataFrame(list(zip(countrycum0, countries_cumproduction0, regioncum0, subregioncum0)),
             columns =['Country', 'Country Code', 'Region', 'Sub-Region'])
 
+df5.index = np.arange(1, len(df) + 1)
+
 st.subheader("No Crude Oil Production")
-st.dataframe(df5_final)
+st.dataframe(df5)
