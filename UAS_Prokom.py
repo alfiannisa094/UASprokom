@@ -77,7 +77,7 @@ countrynregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 
 st.subheader("Crude Oil Production History by Country")
 
-dropdown1 = st.text_input('Choose country:', country_names)
+dropdown1 = st.selectbox('Choose country:', country_names)
 
 country_code = codencountry[dropdown1]  
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
@@ -91,18 +91,20 @@ st.pyplot(fig1)
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
 
-# st.write("Crude Oil Production History by Country")
-# slider_country = st.slider("Top number of countries")
-# slider_year = st.slider("Year")
+st.write("Crude Oil Production History by Country")
+slider_country = st.slider("Select top number of countries", min_value = 1, max_value = len(country_names))
+slider_year = st.slider("Select year", min_value = 1971, max_value = 2015))
 
-# slider1_country = input("Masukkan berapa besar negara: ")
-# dropdown2 = input("Masukkan tahun (1971-2015): ")
+df2_year = df_cleaned.loc[df_cleaned["tahun"] == int(dropdown2),["kode_negara","produksi"]]
+df2_sorted = df2_year.sort_values(["produksi"], ascending = False)  #mengurutkan data produksi dari terbesar ke terkecil
+df2_reindexed = df2_sorted.reset_index(drop=True)
+df2_final = df2_reindexed[0:int(slider1_country)]
 
-# df2_year = df_cleaned.loc[df_cleaned["tahun"] == int(dropdown2),["kode_negara","produksi"]]
-# df2_sorted = df2_year.sort_values(["produksi"], ascending = False)  #mengurutkan data produksi dari terbesar ke terkecil
-# df2_reindexed = df2_sorted.reset_index(drop=True)
-# df2_final = df2_reindexed[0:int(slider1_country)]
-# print(df2_final)
+fig2, ax = plt.subplots()
+ax.bar(df2_final["kode_negara"], df2_final["produksi"])
+ax.set_xlabel("Country", fontsize = 14)
+ax.set_ylabel("Crude Oil Production", fontsize = 14)
+st.pyplot(fig2)
 
 # c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara kumulatif
 #    keseluruhan tahun, dimana nilai B dapat dipilih oleh user secara interaktif.
