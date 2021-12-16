@@ -74,7 +74,7 @@ countrynregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 #   N dapat dipilih oleh user secara interaktif. Nama negara N dituliskan secara lengkap bukan kode
 #   negaranya.
 
-st.write("Crude Oil Production History by Country")
+st.subheader("Crude Oil Production History by Country")
 
 # dropdown1 = st.multiselect('Choose country:', country_names)
 # dropdown1 = input("Negara:")
