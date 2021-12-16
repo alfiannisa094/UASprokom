@@ -7,6 +7,8 @@ import pandas as pd
 import numpy as np
 import json as js
 import streamlit as st
+import matplotlib.pyplot as plt
+from matplotlib import cm
 
 st.set_page_config(layout="wide")  # this needs to be the first Streamlit command called
 st.title("Crude Oil Production throughout History")
@@ -79,10 +81,12 @@ st.subheader("Crude Oil Production History by Country")
 dropdown1 = st.selectbox('Choose country:', country_names)
 country_code = codencountry[dropdown1]
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
-df1_yearindex= data_production.set_index("tahun") 
 
-fig1 = px.line(df1_yearindex)
-st.write(fig1)
+fig1, ax = plt.subplots()
+ax.bar(df1["tahun"], df1["produksi"])
+ax.set_xlabel("Year", fontsize = 14)
+ax.set_ylabel("Crude Oil Production", fontsize = 14)
+st.pyplot(fig1)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
