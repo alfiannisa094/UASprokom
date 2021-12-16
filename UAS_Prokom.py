@@ -79,8 +79,10 @@ countrynregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 st.subheader("Crude Oil Production History by Country")
 
 dropdown1 = st.selectbox('Choose country:', country_names)
-country_code = codencountry[dropdown1]
-df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
+
+if len(dropdown1) > 0 :
+    country_code = codencountry[dropdown1]  
+    df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
 
 fig1, ax = plt.subplots()
 ax.bar(df1["tahun"], df1["produksi"])
