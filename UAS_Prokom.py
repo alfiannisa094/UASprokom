@@ -76,7 +76,7 @@ countrynregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 
 st.subheader("Crude Oil Production History by Country")
 
-dropdown1 = st.multiselect('Choose country:', country_names)
+dropdown1 = st.selectbox('Choose country:', country_names)
 
 if len(dropdown1) > 0:
     country_code = codencountry["dropdown1"]
