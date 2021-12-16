@@ -110,7 +110,7 @@ st.pyplot(fig2)
 #    keseluruhan tahun, dimana nilai B dapat dipilih oleh user secara interaktif.
 
 st.subheader("Cumulative Crude Oil Production (1971-2015)")
-slider2_country = st.slider("Select top number of countries", min_value = 1, max_value = len(country_names))
+slider2_country = st.slider("Select top number of countries :", min_value = 1, max_value = len(country_names))
 
 sumdict = dict()
 
