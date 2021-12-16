@@ -62,6 +62,7 @@ for code in data_country:
 
 # Memasangkan kode negara dengan nama negara 
 countryncode = jsonasdf.set_index("alpha-3")["name"].to_dict()
+codencountry = jsonasdf.set_index("name")["alpha-3"].to_dict()
 
 # Memasangkan kode negara dengan region
 countrynregion = jsonasdf.set_index("alpha-3")["region"].to_dict()
@@ -77,16 +78,12 @@ st.subheader("Crude Oil Production History by Country")
 
 dropdown1 = st.multiselect('Choose country:', country_names)
 
-for country in data_country :
-    if country["name"] == dropdown1:
-        country_code = country["alpha-3"]
-    else:
-        continue
+country_code = codencountry["dropdown1"]
 
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
 df1_yearindex= data_production.set_index("tahun") 
 
-st.line_chart(data=df1_yearindex, width = 10, height = 400)
+st.line_chart(data = df1_yearindex, width = 10, height = 400)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
