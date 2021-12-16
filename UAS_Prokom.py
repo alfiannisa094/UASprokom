@@ -81,7 +81,7 @@ country_code = codencountry[dropdown1]
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
 df1_yearindex= data_production.set_index("tahun") 
 
-fig1 = px.line(df1)
+fig1 = px.line(df1_yearindex)
 st.write(fig1)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
