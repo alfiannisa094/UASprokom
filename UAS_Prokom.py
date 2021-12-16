@@ -197,16 +197,16 @@ st.header("Cumulative Summary (1971-2015)")
 
 
 # Negara dengan produksi terkecil
-df3_cleaned = df3[df3['Production'] != 0]
+df3_cleaned = df3[df3["Production"] != 0]
 index_cumsmallest_production = df3_cleaned["Production"].idxmin()
-cumsmallest_production = df3.Country[index_cumsmallest_production]
+cumsmallest_production = df3_cleaned.Country[index_cumsmallest_production]
 country_cumsmallest_production = countryncode[cumsmallest_production]
 
 st.write("Production: ", df3_cleaned["Production"][index_cumsmallest_production])
 st.write("Country: ", country_cumsmallest_production)
-st.write("Country Code: ", smallest_cumproduction)
+st.write("Country Code: ", cumsmallest_production)
 st.write("Region: ", countrynregion[smallest_cumproduction])
-st.write("Sub-Region: ",  countrynsubregion[smallest_cumproduction])
+st.write("Sub-Region: ", countrynsubregion[smallest_cumproduction])
 
 # Negara dengan produksi 0
 
