@@ -238,7 +238,7 @@ for i in countries_cumproduction0:
 df5 = pd.DataFrame(list(zip(countrycum0, countries_cumproduction0, regioncum0, subregioncum0)),
             columns =['Country', 'Country Code', 'Region', 'Sub-Region'])
 
-df5.index = df5.arange(1, len(df) + 1)
+df.index = df5.arange(1, len(df) + 1)
 
 st.subheader("No Crude Oil Production")
 st.dataframe(df5)
