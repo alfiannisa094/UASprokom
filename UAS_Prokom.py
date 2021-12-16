@@ -84,7 +84,7 @@ df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
 fig1, ax = plt.subplots()
 ax.plot(df1["tahun"], df1["produksi"])
-ax.set_title(dropdown1)
+ax.set_title(dropdown1, "Crude Oil Production")
 ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
 st.pyplot(fig1)
 
