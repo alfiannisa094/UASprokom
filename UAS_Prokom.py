@@ -77,7 +77,7 @@ countrynregion = jsonasdf.set_index("alpha-3")["sub-region"].to_dict()
 
 st.subheader("Crude Oil Production History by Country")
 
-dropdown1 = st.textbox('Choose country:', country_names)
+dropdown1 = st.text_input('Choose country:', country_names)
 
 country_code = codencountry[dropdown1]  
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
