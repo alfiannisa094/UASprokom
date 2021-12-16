@@ -147,27 +147,35 @@ df4 = df_cleaned.loc[df_cleaned["tahun"] == int(select_year)]
 df4_cleaned = df4[df4['produksi'] != 0]
 df4_cleaned_sorted = df4_cleaned.sort_values(["produksi"], ascending=False)
 
+df4_production0 = df4[df4['produksi'] == 0]
+countries_production0 = df4_production0["kode_negara"].tolist()
+
+# Negara dengan produksi terbesar 
+
 index_biggest_production = df4_cleaned["produksi"].idxmax()
 biggest_production = df_cleaned.kode_negara[index_biggest_production]
 country_biggest_production = countryncode[biggest_production]           # Nama negara dgn produksi terbanyak pada tahun T
 
-index_smallest_production = df4_cleaned["produksi"].idxmin()
-smallest_production = df_cleaned.kode_negara[index_smallest_production]
-country_smallest_production = countryncode[smallest_production]           # Nama negara dgn produksi terkecil pada tahun T
-
-df4_production0 = df4[df4['produksi'] == 0]
-countries_production0 = df4_production0["kode_negara"].tolist()
-
-st.subheader("Largest Producer of Crude Oil")
+st.subheader("Largest Production of Crude Oil")
 st.write("Production: ", df_cleaned["produksi"][index_biggest_production])
 st.write("Country: ", country_biggest_production)
 st.write("Country Code: ", biggest_production)
 st.write("Region: ", countrynregion[biggest_production])
 st.write("Sub-Region: ",  countrynsubregion[biggest_production])
 
-
-
-
-# Negara dengan produksi terbesar 
 # Negara dengan produksi terkecil
-# Negara dengan produksi terbesar 
+
+index_smallest_production = df4_cleaned["produksi"].idxmin()
+smallest_production = df_cleaned.kode_negara[index_smallest_production]
+country_smallest_production = countryncode[smallest_production]           # Nama negara dgn produksi terkecil pada tahun T
+
+st.subheader("Least Production of Crude Oil")
+st.write("Production: ", df_cleaned["produksi"][index_smallest_production])
+st.write("Country: ", country_smallest_production)
+st.write("Country Code: ", smallest_production)
+st.write("Region: ", countrynregion[smallest_production])
+st.write("Sub-Region: ",  countrynsubregion[smallest_production])
+
+# Negara dengan produksi 0
+
+
