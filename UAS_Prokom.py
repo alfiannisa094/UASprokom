@@ -80,7 +80,9 @@ dropdown1 = st.selectbox('Choose country:', country_names)
 country_code = codencountry[dropdown1]
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code,["tahun","produksi"]]
 df1_yearindex= data_production.set_index("tahun") 
-st.line_chart(df1_yearindex)
+
+fig1 = px.line(df1)
+st.write(fig1)
 
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
