@@ -91,14 +91,14 @@ st.pyplot(fig1)
 # b. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar pada tahun T, dimana
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
 
-st.write("Crude Oil Production History by Country")
-slider_country = st.slider("Select top number of countries", min_value = 1, max_value = len(country_names))
+st.subheader("Crude Oil Production History by Country")
+slider1_country = st.slider("Select top number of countries", min_value = 1, max_value = len(country_names))
 slider_year = st.slider("Select year", min_value = 1971, max_value = 2015)
 
 df2_year = df_cleaned.loc[df_cleaned["tahun"] == int(slider_year),["kode_negara","produksi"]]
 df2_sorted = df2_year.sort_values(["produksi"], ascending = False)  #mengurutkan data produksi dari terbesar ke terkecil
 df2_reindexed = df2_sorted.reset_index(drop=True)
-df2_final = df2_reindexed[0:int(slider_country)]
+df2_final = df2_reindexed[0:int(slider1_country)]
 
 fig2, ax = plt.subplots()
 ax.bar(df2_final["kode_negara"], df2_final["produksi"])
@@ -109,26 +109,32 @@ st.pyplot(fig2)
 # c. Grafik yang menunjukan B-besar negara dengan jumlah produksi terbesar secara kumulatif
 #    keseluruhan tahun, dimana nilai B dapat dipilih oleh user secara interaktif.
 
-# st.write("Cumulative Crude Oil Production")
-# slider2_country = input("Masukkan berapa besar negara: ")
+st.subheader("Cumulative Crude Oil Production (1971-2015)")
+slider2_country = st.slider("Select top number of countries", min_value = 1, max_value = len(country_names))
 
-# sumdict = dict()
+sumdict = dict()
 
-# for country in country_codes_cleaned:
-#     df_country = df_countryindex.loc[country]
-#     df_sum = df_country["produksi"].sum()
-#     sumdict[country] = df_sum
+for country in country_codes_cleaned:
+    df_country = df_countryindex.loc[country]
+    df_sum = df_country["produksi"].sum()
+    sumdict[country] = df_sum
 
-# sorted_dict = dict(sorted(sumdict.items(), key=lambda x: x[1], reverse=True))
+sorted_dict = dict(sorted(sumdict.items(), key=lambda x: x[1], reverse=True))
 
-# for country in data_country :
-#     if country["name"] == slider2_country:
-#         country_code = country ["alpha-3"]
-#     else:
-#         continue
+for country in data_country :
+    if country["name"] == slider2_country:
+        country_code = country ["alpha-3"]
+    else:
+        continue
 
-# df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
-# df3_final = df3[0:int(slider2_country)]
+df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
+df3_final = df3[0:int(slider2_country)]
+
+fig3, ax = plt.subplots()
+ax.bar(df3_final["kode_negara"], df2_final["produksi"])
+ax.set_xlabel("Country", fontsize = 14)
+ax.set_ylabel("Crude Oil Production", fontsize = 14)
+st.pyplot(fig3)
 
 # d. Informasi yang menyebutkan: 
 #    (1) nama lengkap negara, kode negara, region, dan sub-region dengan jumlah produksi terbesar pada tahun T dan keseluruhan tahun
