@@ -147,9 +147,6 @@ df4 = df_cleaned.loc[df_cleaned["tahun"] == int(select_year)]
 df4_cleaned = df4[df4['produksi'] != 0]
 df4_cleaned_sorted = df4_cleaned.sort_values(["produksi"], ascending=False)
 
-df4_production0 = df4[df4['produksi'] == 0]
-countries_production0 = df4_production0["kode_negara"].tolist()
-
 # Negara dengan produksi terbesar 
 
 index_biggest_production = df4_cleaned["produksi"].idxmax()
@@ -177,5 +174,9 @@ st.write("Region: ", countrynregion[smallest_production])
 st.write("Sub-Region: ",  countrynsubregion[smallest_production])
 
 # Negara dengan produksi 0
+
+df4_production0 = df4[df4['produksi'] == 0]
+countries_production0 = df4_production0["kode_negara"].tolist()
+st.dataframe(df4_production0)
 
 
