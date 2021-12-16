@@ -152,7 +152,7 @@ index_biggest_production = df4_cleaned["produksi"].idxmax()
 biggest_production = df_cleaned.kode_negara[index_biggest_production]
 country_biggest_production = countryncode[biggest_production]           # Nama negara dgn produksi terbanyak pada tahun T
 
-st.subheader("Largest Production of Crude Oil in ", int(select_year)
+st.subheader("Largest Production of Crude Oil in ", int(select_year))
 st.write("Production: ", df_cleaned["produksi"][index_biggest_production])
 st.write("Country: ", country_biggest_production)
 st.write("Country Code: ", biggest_production)
@@ -165,7 +165,7 @@ index_smallest_production = df4_cleaned["produksi"].idxmin()
 smallest_production = df_cleaned.kode_negara[index_smallest_production]
 country_smallest_production = countryncode[smallest_production]           # Nama negara dgn produksi terkecil pada tahun T
 
-st.subheader("Least Production of Crude Oil in ", int(select_year)
+st.subheader("Least Production of Crude Oil in ", int(select_year))
 st.write("Production: ", df_cleaned["produksi"][index_smallest_production])
 st.write("Country: ", country_smallest_production)
 st.write("Country Code: ", smallest_production)
