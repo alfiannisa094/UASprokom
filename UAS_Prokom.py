@@ -177,6 +177,18 @@ st.write("Sub-Region: ",  countrynsubregion[smallest_production])
 
 df4_production0 = df4[df4['produksi'] == 0]
 countries_production0 = df4_production0["kode_negara"].tolist()
-st.dataframe(df4_production0)
 
+country0 = list()
+region0 = list()
+subregion0 = list()
+
+for i in countries_production0:
+    country0.append(countryncode[i])
+    region0.append(countrynregion[i])
+    subregion0.append(countrynsubregion[i])
+
+df4_final = pd.DataFrame(list(zip(countries_production0, country0, region0, subregion0)),
+            columns =['Country', 'Country Code', 'Region', 'Sub-Region'])
+
+st.dataframe(df4_final)
 
