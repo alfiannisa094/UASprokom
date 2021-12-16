@@ -82,7 +82,7 @@ dropdown1 = st.selectbox('Choose country:', country_names)
 country_code = codencountry[dropdown1]  
 df1 = df_cleaned.loc[df_cleaned["kode_negara"] == country_code]
 
-st.markdown(f"{dropdown1} Crude Oil Production")
+st.subheader(f"{dropdown1} Crude Oil Production")
 fig1, ax = plt.subplots()
 ax.plot(df1["tahun"], df1["produksi"])
 ax.set(xlabel = "Year", ylabel = "Crude Oil Production")
@@ -100,7 +100,7 @@ df2_sorted = df2_year.sort_values(["produksi"], ascending = False)  #mengurutkan
 df2_reindexed = df2_sorted.reset_index(drop=True)
 df2_final = df2_reindexed[0:int(input_country)]
 
-st.markdown(f"Top {input_country} Crude Oil Producers in {slider_year}")
+st.subheader(f"Top {input_country} Crude Oil Producers in {slider_year}")
 fig2, ax = plt.subplots()
 ax.bar(df2_final["kode_negara"], df2_final["produksi"])
 ax.set(xlabel = "Country", ylabel = "Crude Oil Production")
@@ -125,6 +125,7 @@ sorted_dict = dict(sorted(sumdict.items(), key=lambda x: x[1], reverse=True))
 df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
 df3_final = df3[0:int(select_country)]
 
+st.subheader(f"Top {input_country} Crude Oil Producers in History")
 fig3, ax = plt.subplots()
 ax.bar(df3_final["Country"], df3_final["Production"])
 ax.set(xlabel = "Country", ylabel = "Crude Oil Production")
