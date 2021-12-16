@@ -199,7 +199,7 @@ index_cumbiggest_production = df3["Production"].idxmax()
 cumbiggest_production = df3.Country[index_cumbiggest_production]
 country_cumbiggest_production = countryncode[cumbiggest_production]
 
-st.write("Production: ", df3_cleaned["Production"][index_cumbiggest_production])
+st.write("Production: ", df3["Production"][index_cumbiggest_production])
 st.write("Country: ", country_cumbiggest_production)
 st.write("Country Code: ", cumbiggest_production)
 st.write("Region: ", countrynregion[cumbiggest_production])
