@@ -92,13 +92,13 @@ st.pyplot(fig1)
 #    nilai B dan T dapat dipilih oleh user secara interaktif.
 
 st.subheader("Crude Oil Production History by Country")
-slider1_country = st.slider("Select top number of countries", min_value = 1, max_value = len(country_names))
+input_country = st.number_input("Select top number of countries", min_value = 1, max_value = len(country_names))
 slider_year = st.slider("Select year", min_value = 1971, max_value = 2015)
 
 df2_year = df_cleaned.loc[df_cleaned["tahun"] == int(slider_year),["kode_negara","produksi"]]
 df2_sorted = df2_year.sort_values(["produksi"], ascending = False)  #mengurutkan data produksi dari terbesar ke terkecil
 df2_reindexed = df2_sorted.reset_index(drop=True)
-df2_final = df2_reindexed[0:int(slider1_country)]
+df2_final = df2_reindexed[0:int(input_country)]
 
 fig2, ax = plt.subplots()
 ax.bar(df2_final["kode_negara"], df2_final["produksi"])
@@ -110,7 +110,7 @@ st.pyplot(fig2)
 #    keseluruhan tahun, dimana nilai B dapat dipilih oleh user secara interaktif.
 
 st.subheader("Cumulative Crude Oil Production (1971-2015)")
-slider2_country = st.slider("Select top number of countries :", min_value = 1, max_value = len(country_names))
+select_country = st.slider("Select top number of countries :", min_value = 1, max_value = len(country_names))
 
 sumdict = dict()
 
@@ -121,14 +121,8 @@ for country in country_codes_cleaned:
 
 sorted_dict = dict(sorted(sumdict.items(), key=lambda x: x[1], reverse=True))
 
-for country in data_country :
-    if country["name"] == slider2_country:
-        country_code = country ["alpha-3"]
-    else:
-        continue
-
 df3 = pd.DataFrame(sorted_dict.items(), columns=['Country', 'Production'])
-df3_final = df3[0:int(slider2_country)]
+df3_final = df3[0:int(select_country)]
 
 fig3, ax = plt.subplots()
 ax.bar(df3_final["Country"], df3_final["Production"])
@@ -144,9 +138,9 @@ st.pyplot(fig3)
 years = df_cleaned['tahun'].tolist()
 years = list(dict.fromkeys(years))
 
-slider3_year = st.selectbox("Select year", min_value = 1971, max_value = 2015)
+select_year = st.selectbox("Select year", min_value = 1971, max_value = 2015)
 
-df4 = df_cleaned.loc[df_cleaned["tahun"] == int(slider3_year)]
+df4 = df_cleaned.loc[df_cleaned["tahun"] == int(select_year)]
 df4_cleaned = df4[df4['produksi'] != 0]
 df4_cleaned_sorted = df4_cleaned.sort_values(["produksi"], ascending=False)
 
