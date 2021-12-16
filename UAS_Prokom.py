@@ -205,8 +205,8 @@ country_cumsmallest_production = countryncode[cumsmallest_production]
 st.write("Production: ", df3_cleaned["Production"][index_cumsmallest_production])
 st.write("Country: ", country_cumsmallest_production)
 st.write("Country Code: ", cumsmallest_production)
-st.write("Region: ", countrynregion[smallest_cumproduction])
-st.write("Sub-Region: ", countrynsubregion[smallest_cumproduction])
+st.write("Region: ", countrynregion[cumsmallest_production])
+st.write("Sub-Region: ", countrynsubregion[cumsmallest_production])
 
 # Negara dengan produksi 0
 
